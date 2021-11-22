@@ -4,7 +4,7 @@
  */
 
 import { SET_CART_ITEMS, GET_CART_ITEMS } from '../../actions/cart/cart';
-import { CART_SESSION_KEY } from '@eeacms/volto-clms-theme/utils/useCartState';
+import { CART_SESSION_KEY } from '@eeacms/volto-clms-utils/cart/useCartState';
 
 const initialState = {
   items: [],

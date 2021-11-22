@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setCartItems } from '@eeacms/volto-clms-theme/actions';
+import { setCartItems } from '@eeacms/volto-clms-utils/actions';
 import { Message } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import { useSelector } from 'react-redux';
