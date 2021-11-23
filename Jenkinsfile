@@ -2,9 +2,9 @@ pipeline {
   agent any
 
   environment {
-        GIT_NAME = "volto-addon-template"
+        GIT_NAME = "volto-clms-utils"
         NAMESPACE = "@eeacms"
-        SONARQUBE_TAGS = "volto.eea.europa.eu"
+        SONARQUBE_TAGS = "volto.eea.europa.eu,clms.land.copernicus.eu,"
         DEPENDENCIES = ""
     }
 
