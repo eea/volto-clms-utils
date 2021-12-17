@@ -4,6 +4,8 @@ import { setCartItems } from '@eeacms/volto-clms-utils/actions';
 import { Message } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import { useSelector } from 'react-redux';
+
+import { cleanDuplicatesEntries } from '@eeacms/volto-clms-utils/utils';
 export const CART_SESSION_KEY = 'cart_session';
 
 const useCartState = () => {
@@ -19,11 +21,11 @@ const useCartState = () => {
 
   const user_id = useSelector((state) => state.users.user.id);
   const cartState = useSelector((state) => state.cart_items.items);
-
   useEffect(() => {
-    user_id &&
+    if (user_id) {
       SET_CART_SESSION_USER_KEY(CART_SESSION_KEY.concat(`_${user_id}`));
-    getCartSessionStorage();
+      getCartSessionStorage();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [CART_SESSION_USER_KEY, user_id]);
   const dispatch = useDispatch();
@@ -74,12 +76,6 @@ const useCartState = () => {
 
     saveItems(newcart);
   };
-
-  const cleanDuplicatesEntries = (arr) =>
-    arr.filter(
-      (arr, index, self) =>
-        index === self.findIndex((t) => t.unique_id === arr.unique_id),
-    );
 
   const Toast = ({ message, time = toasTime }) => {
     return (
