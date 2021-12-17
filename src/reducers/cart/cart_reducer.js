@@ -23,7 +23,7 @@ export const cartItemsReducer = (state = initialState, action = {}) => {
         : CART_SESSION_KEY;
       return {
         ...state,
-        items: JSON.parse(localStorage.getItem(CART_SESSION_USER_KEY)),
+        items: JSON.parse(localStorage.getItem(CART_SESSION_USER_KEY)) || [],
       };
     default:
       return state;
