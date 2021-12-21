@@ -5,7 +5,7 @@ import { Message } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import { useSelector } from 'react-redux';
 
-import { cleanDuplicatesEntries } from '@eeacms/volto-clms-utils/utils';
+import { cleanDuplicatesUniqueIds } from '@eeacms/volto-clms-utils/utils';
 export const CART_SESSION_KEY = 'cart_session';
 
 const useCartState = () => {
@@ -31,7 +31,7 @@ const useCartState = () => {
   const dispatch = useDispatch();
 
   const saveItems = (values) => {
-    let items = cleanDuplicatesEntries(values);
+    let items = cleanDuplicatesUniqueIds(values);
     localStorage.setItem(CART_SESSION_USER_KEY, JSON.stringify(items));
     dispatch(setCartItems(items ?? []));
     setSavedToCard(true);
@@ -53,15 +53,11 @@ const useCartState = () => {
   };
 
   const addCartItem = async (value) => {
-    let card_item = value.map((item) => {
-      item['task_in_progress'] = false;
-      return item;
-    });
     await getCartSessionStorage();
     if (cartState) {
-      saveItems(cartState.concat(card_item));
+      saveItems(cartState.concat(value));
     } else {
-      saveItems(card_item);
+      saveItems(value);
     }
   };
 
@@ -92,18 +88,6 @@ const useCartState = () => {
     );
   };
 
-  const changeCartItemTaskStatus = async (unique_id, in_progress) => {
-    await getCartSessionStorage();
-    let newcart = cartState.map((item) => {
-      if (item['unique_id'] === unique_id) {
-        item['task_in_progress'] = in_progress;
-      }
-      return item;
-    });
-    saveItems(newcart);
-  };
-  // return [cart, addCartItem, removeCartSessionStorage];
-
   return {
     cart: cartState,
     addCartItem: addCartItem,
@@ -111,7 +95,6 @@ const useCartState = () => {
     removeCartItem: removeCartItem,
     Toast: Toast,
     isLoggedIn: isLoggedIn,
-    changeCartItemTaskStatus: changeCartItemTaskStatus,
   };
 };
 
