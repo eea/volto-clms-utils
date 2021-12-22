@@ -8,4 +8,10 @@ const cleanDuplicatesEntries = (arr) =>
       })
     );
   });
-export { cleanDuplicatesEntries };
+
+const cleanDuplicatesUniqueIds = (arr) =>
+  arr.filter(
+    (value, index, self) =>
+      index === self.findIndex((t) => t.unique_id === value.unique_id),
+  );
+export { cleanDuplicatesEntries, cleanDuplicatesUniqueIds };

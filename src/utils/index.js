@@ -1,2 +1,2 @@
-import { cleanDuplicatesEntries } from './utils';
-export { cleanDuplicatesEntries };
+import { cleanDuplicatesEntries, cleanDuplicatesUniqueIds } from './utils';
+export { cleanDuplicatesEntries, cleanDuplicatesUniqueIds };
