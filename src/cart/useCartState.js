@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setCartItems } from '@eeacms/volto-clms-utils/actions';
+import React, { useEffect, useState } from 'react';
+
 import { Message } from 'semantic-ui-react';
+import { cleanDuplicatesUniqueIds } from '@eeacms/volto-clms-utils/utils';
 import jwtDecode from 'jwt-decode';
+import { setCartItems } from '@eeacms/volto-clms-utils/actions';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
-import { cleanDuplicatesUniqueIds } from '@eeacms/volto-clms-utils/utils';
 export const CART_SESSION_KEY = 'cart_session';
 
 const useCartState = () => {
@@ -78,7 +79,7 @@ const useCartState = () => {
       <>
         {setToastTime(time)}
         {savedToCard ? (
-          <Message floating size="small">
+          <Message positive compact floating size="big">
             {message ? message : 'Added to card'}
           </Message>
         ) : (
