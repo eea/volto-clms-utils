@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setCartItems } from '@eeacms/volto-clms-utils/actions';
+import React, { useEffect, useState } from 'react';
+
 import { Message } from 'semantic-ui-react';
+import { cleanDuplicatesUniqueIds } from '@eeacms/volto-clms-utils/utils';
 import jwtDecode from 'jwt-decode';
+import { setCartItems } from '@eeacms/volto-clms-utils/actions';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+
 export const CART_SESSION_KEY = 'cart_session';
 
 const useCartState = () => {
@@ -19,17 +22,17 @@ const useCartState = () => {
 
   const user_id = useSelector((state) => state.users.user.id);
   const cartState = useSelector((state) => state.cart_items.items);
-
   useEffect(() => {
-    user_id &&
+    if (user_id) {
       SET_CART_SESSION_USER_KEY(CART_SESSION_KEY.concat(`_${user_id}`));
-    getCartSessionStorage();
+      getCartSessionStorage();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [CART_SESSION_USER_KEY, user_id]);
   const dispatch = useDispatch();
 
   const saveItems = (values) => {
-    let items = cleanDuplicatesEntries(values);
+    let items = cleanDuplicatesUniqueIds(values);
     localStorage.setItem(CART_SESSION_USER_KEY, JSON.stringify(items));
     dispatch(setCartItems(items ?? []));
     setSavedToCard(true);
@@ -51,15 +54,11 @@ const useCartState = () => {
   };
 
   const addCartItem = async (value) => {
-    let card_item = value.map((item) => {
-      item['task_in_progress'] = false;
-      return item;
-    });
     await getCartSessionStorage();
     if (cartState) {
-      saveItems(cartState.concat(card_item));
+      saveItems(cartState.concat(value));
     } else {
-      saveItems(card_item);
+      saveItems(value);
     }
   };
 
@@ -75,18 +74,12 @@ const useCartState = () => {
     saveItems(newcart);
   };
 
-  const cleanDuplicatesEntries = (arr) =>
-    arr.filter(
-      (arr, index, self) =>
-        index === self.findIndex((t) => t.unique_id === arr.unique_id),
-    );
-
   const Toast = ({ message, time = toasTime }) => {
     return (
       <>
         {setToastTime(time)}
         {savedToCard ? (
-          <Message floating size="small">
+          <Message positive compact floating size="big">
             {message ? message : 'Added to card'}
           </Message>
         ) : (
@@ -96,18 +89,6 @@ const useCartState = () => {
     );
   };
 
-  const changeCartItemTaskStatus = async (unique_id, in_progress) => {
-    await getCartSessionStorage();
-    let newcart = cartState.map((item) => {
-      if (item['unique_id'] === unique_id) {
-        item['task_in_progress'] = in_progress;
-      }
-      return item;
-    });
-    saveItems(newcart);
-  };
-  // return [cart, addCartItem, removeCartSessionStorage];
-
   return {
     cart: cartState,
     addCartItem: addCartItem,
@@ -115,7 +96,6 @@ const useCartState = () => {
     removeCartItem: removeCartItem,
     Toast: Toast,
     isLoggedIn: isLoggedIn,
-    changeCartItemTaskStatus: changeCartItemTaskStatus,
   };
 };
 
