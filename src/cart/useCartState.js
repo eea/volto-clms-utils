@@ -63,7 +63,7 @@ const useCartState = () => {
   };
 
   const removeCartItem = async (id) => {
-    await getCartSessionStorage();
+    // await getCartSessionStorage();
     let newcart = cartState.slice();
     await newcart.forEach((item) => {
       if (item.unique_id === id) {
@@ -72,6 +72,14 @@ const useCartState = () => {
     });
 
     saveItems(newcart);
+  };
+
+  const removeCartItems = (ids) => {
+    // await getCartSessionStorage();
+    let newcart = cartState.slice();
+    let removed_cart = newcart.filter((item) => !ids.includes(item.unique_id));
+
+    saveItems(removed_cart);
   };
 
   const Toast = ({ message, time = toasTime }) => {
@@ -94,6 +102,7 @@ const useCartState = () => {
     addCartItem: addCartItem,
     removeAllCart: removeAllCart,
     removeCartItem: removeCartItem,
+    removeCartItems: removeCartItems,
     Toast: Toast,
     isLoggedIn: isLoggedIn,
   };
