@@ -1,4 +1,4 @@
-const cleanDuplicatesEntries = (arr) =>
+export const cleanDuplicatesEntries = (arr) =>
   arr.filter((object, index) => {
     const _object = JSON.stringify(object);
     return (
@@ -9,9 +9,8 @@ const cleanDuplicatesEntries = (arr) =>
     );
   });
 
-const cleanDuplicatesUniqueIds = (arr) =>
+export const cleanDuplicatesUniqueIds = (arr) =>
   arr.filter(
     (value, index, self) =>
       index === self.findIndex((t) => t.unique_id === value.unique_id),
   );
-export { cleanDuplicatesEntries, cleanDuplicatesUniqueIds };
