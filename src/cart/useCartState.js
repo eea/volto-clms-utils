@@ -102,6 +102,7 @@ const useCartState = () => {
     removeAllCart: removeAllCart,
     removeCartItem: removeCartItem,
     removeCartItems: removeCartItems,
+    updateCart: saveItems,
     Toast: Toast,
     isLoggedIn: isLoggedIn,
   };
