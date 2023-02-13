@@ -31,7 +31,7 @@
     "settings": {
       "import/resolver": {
         "alias": {
-          "map": [["@plone/volto", "./src"]],
+          "map": [["@plone/volto", "./src"],[ "@eeacms/volto-matomo", "@eeacms/volto-matomo/src"]],
           "extensions": [".js", ".jsx", ".json"]
         },
         "babel-plugin-root-import": {
