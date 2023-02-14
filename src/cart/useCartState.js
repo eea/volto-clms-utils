@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import { Message } from 'semantic-ui-react';
-import { cleanDuplicatesUniqueIds } from '@eeacms/volto-clms-utils/utils';
+import { cleanDuplicatesUniqueIds } from '../utils';
 import jwtDecode from 'jwt-decode';
-import { setCartItems } from '@eeacms/volto-clms-utils/actions';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { setCartItems } from '../actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const CART_SESSION_KEY = 'cart_session';
 
@@ -103,6 +102,7 @@ const useCartState = () => {
     removeAllCart: removeAllCart,
     removeCartItem: removeCartItem,
     removeCartItems: removeCartItems,
+    updateCart: saveItems,
     Toast: Toast,
     isLoggedIn: isLoggedIn,
   };

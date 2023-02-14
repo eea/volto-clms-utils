@@ -1,6 +1,6 @@
 {
   "name": "@eeacms/volto-clms-utils",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "@eeacms/volto-clms-utils: Volto add-on",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
@@ -20,13 +20,12 @@
     "@eeacms/volto-matomo"
   ],
   "dependencies": {
-    "@cypress/code-coverage": "^3.9.5",
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "@eeacms/volto-matomo": "^2.0.7"
   },
   "devDependencies": {
     "@cypress/code-coverage": "^3.9.5",
-    "babel-plugin-transform-class-properties": "^6.24.1"
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "md5": "^2.3.0"
   },
   "prettier": {
     "trailingComma": "all",
@@ -79,6 +78,7 @@
     "i18n": "NODE_ENV=production node src/i18n.js",
     "cypress:run": "NODE_ENV=production CYPRESS_API=plone ../../../node_modules/cypress/bin/cypress run",
     "cypress:open": "NODE_ENV=production CYPRESS_API=plone ../../../node_modules/cypress/bin/cypress open",
-    "precommit": "yarn stylelint && yarn prettier && yarn lint"
+    "precommit": "yarn stylelint && yarn prettier && yarn lint",
+    "test": "docker run -it --rm -v $(pwd):/opt/frontend/my-volto-project/src/addons/volto-clms-utils -e GIT_NAME=volto-clms-utils -e NAMESPACE=@eeacms plone/volto-addon-ci"
   }
 }
