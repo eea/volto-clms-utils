@@ -15,7 +15,7 @@ export const CustomMatomoAppExtra = () => {
   useEffect(() => {
     if (search.includes('?SearchableText=')) {
       const value = search.replace('?SearchableText=', '');
-      trackSiteSearch(value);
+      trackSiteSearch({ keyword: value });
     }
   }, [search]);
 
