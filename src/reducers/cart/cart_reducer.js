@@ -4,26 +4,82 @@
  */
 
 import { SET_CART_ITEMS, GET_CART_ITEMS } from '../../actions/cart/cart';
-import { CART_SESSION_KEY } from '../../cart/useCartState';
 
 const initialState = {
   items: [],
+  get: {
+    loading: false,
+    loaded: false,
+    error: null,
+  },
+  set: {
+    loading: false,
+    loaded: false,
+    error: null,
+  },
 };
 
 export const cartItemsReducer = (state = initialState, action = {}) => {
   switch (action?.type) {
-    case SET_CART_ITEMS:
+    case `${SET_CART_ITEMS}_PENDING`:
       return {
         ...state,
-        items: action.items,
+        set: {
+          ...state.set,
+          loading: true,
+          loaded: false,
+          error: null,
+        },
       };
-    case GET_CART_ITEMS:
-      const CART_SESSION_USER_KEY = action.user_id
-        ? CART_SESSION_KEY.concat(`_${action.user_id}`)
-        : CART_SESSION_KEY;
+    case `${SET_CART_ITEMS}_SUCCESS`:
       return {
         ...state,
-        items: JSON.parse(localStorage.getItem(CART_SESSION_USER_KEY)) || [],
+        items: action.items || [],
+        set: {
+          ...state.set,
+          loading: false,
+          loaded: true,
+        },
+      };
+    case `${SET_CART_ITEMS}_ERROR`:
+      return {
+        ...state,
+        set: {
+          ...state.set,
+          loading: false,
+          loaded: false,
+          error: action.error,
+        },
+      };
+    case `${GET_CART_ITEMS}_PENDING`:
+      return {
+        ...state,
+        get: {
+          ...state.get,
+          loading: true,
+          loaded: false,
+          error: null,
+        },
+      };
+    case `${GET_CART_ITEMS}_SUCCESS`:
+      return {
+        ...state,
+        items: action.items || [],
+        get: {
+          ...state.get,
+          loading: false,
+          loaded: true,
+        },
+      };
+    case `${GET_CART_ITEMS}_ERROR`:
+      return {
+        ...state,
+        get: {
+          ...state.get,
+          loading: false,
+          loaded: false,
+          error: action.error,
+        },
       };
     default:
       return state;
