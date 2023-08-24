@@ -105,7 +105,7 @@ const useCartState = () => {
     updateCart: saveItems,
     Toast: Toast,
     isLoggedIn: isLoggedIn,
-    user_id: user_id,
+    user_id: user_id, //user_id
   };
 };
 
