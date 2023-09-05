@@ -25,7 +25,9 @@
   "devDependencies": {
     "@cypress/code-coverage": "^3.9.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "md5": "^2.3.0"
+    "md5": "^2.3.0",
+    "husky": "*",
+    "lint-staged": "13.1.4"
   },
   "prettier": {
     "trailingComma": "all",
@@ -62,6 +64,27 @@
     },
     "ignoreFiles": "theme/themes/default/**/*.overrides"
   },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json}": [
+      "make lint-fix",
+      "make prettier-fix"
+    ],
+    "src/**/*.{jsx}": [
+      "make i18n"
+    ],
+    "theme/**/*.{css,less}": [
+      "make stylelint-fix"
+    ],
+    "src/**/*.{css,less}": [
+      "make stylelint-fix"
+    ],
+    "theme/**/*.overrides": [
+      "make stylelint-fix"
+    ],
+    "src/**/*.overrides": [
+      "make stylelint-fix"
+    ]
+  },
   "scripts": {
     "release": "release-it",
     "release-major-beta": "release-it major --preRelease=beta",
@@ -79,6 +102,7 @@
     "cypress:run": "NODE_ENV=production CYPRESS_API=plone ../../../node_modules/cypress/bin/cypress run",
     "cypress:open": "NODE_ENV=production CYPRESS_API=plone ../../../node_modules/cypress/bin/cypress open",
     "precommit": "yarn stylelint && yarn prettier && yarn lint",
-    "test": "docker run -it --rm -v $(pwd):/opt/frontend/my-volto-project/src/addons/volto-clms-utils -e GIT_NAME=volto-clms-utils -e NAMESPACE=@eeacms plone/volto-addon-ci"
+    "test": "docker run -it --rm -v $(pwd):/opt/frontend/my-volto-project/src/addons/volto-clms-utils -e GIT_NAME=volto-clms-utils -e NAMESPACE=@eeacms plone/volto-addon-ci",
+    "prepare": "husky install"
   }
 }
