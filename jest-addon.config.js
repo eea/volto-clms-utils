@@ -19,12 +19,12 @@ module.exports = {
   },
   transform: {
     '^.+\\.js(x)?$': 'babel-jest',
-    '^.+\\.css$': 'jest-css-modules',
-    '^.+\\.less$': 'jest-css-modules',
-    '^.+\\.scss$': 'jest-css-modules',
-    '^.+\\.(png)$': 'jest-file',
-    '^.+\\.(jpg)$': 'jest-file',
-    '^.+\\.(svg)$': './node_modules/@plone/volto/jest-svgsystem-transform.js',
+    // '^.+\\.css$': 'jest-css-modules',
+    // '^.+\\.less$': 'jest-css-modules',
+    // '^.+\\.scss$': 'jest-css-modules',
+    // '^.+\\.(png)$': 'jest-file',
+    // '^.+\\.(jpg)$': 'jest-file',
+    // '^.+\\.(svg)$': './node_modules/@plone/volto/jest-svgsystem-transform.js',
   },
   coverageThreshold: {
     global: {
