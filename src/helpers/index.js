@@ -1,0 +1,1 @@
+export { withFontAwesomeLibs } from './withFontAwesomeLibs';

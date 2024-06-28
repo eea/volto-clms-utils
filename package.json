@@ -1,6 +1,6 @@
 {
   "name": "@eeacms/volto-clms-utils",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "@eeacms/volto-clms-utils: Volto add-on",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
@@ -20,11 +20,17 @@
     "@eeacms/volto-matomo"
   ],
   "dependencies": {
-    "@eeacms/volto-matomo": "^2.0.7"
+    "@eeacms/volto-matomo": "^2.0.7",
+    "@fortawesome/fontawesome-svg-core": "6.5.2",
+    "@fortawesome/free-regular-svg-icons": "6.5.2",
+    "@fortawesome/free-solid-svg-icons": "6.5.2",
+    "@fortawesome/react-fontawesome": "0.2.2"
   },
   "devDependencies": {
     "@cypress/code-coverage": "^3.9.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "husky": "^8.0.3",
+    "lint-staged": "13.1.4",
     "md5": "^2.3.0"
   },
   "prettier": {
@@ -62,6 +68,27 @@
     },
     "ignoreFiles": "theme/themes/default/**/*.overrides"
   },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json}": [
+      "make lint-fix",
+      "make prettier-fix"
+    ],
+    "src/**/*.{jsx}": [
+      "make i18n"
+    ],
+    "theme/**/*.{css,less}": [
+      "make stylelint-fix"
+    ],
+    "src/**/*.{css,less}": [
+      "make stylelint-fix"
+    ],
+    "theme/**/*.overrides": [
+      "make stylelint-fix"
+    ],
+    "src/**/*.overrides": [
+      "make stylelint-fix"
+    ]
+  },
   "scripts": {
     "release": "release-it",
     "release-major-beta": "release-it major --preRelease=beta",
@@ -79,6 +106,10 @@
     "cypress:run": "NODE_ENV=production CYPRESS_API=plone ../../../node_modules/cypress/bin/cypress run",
     "cypress:open": "NODE_ENV=production CYPRESS_API=plone ../../../node_modules/cypress/bin/cypress open",
     "precommit": "yarn stylelint && yarn prettier && yarn lint",
-    "test": "docker run -it --rm -v $(pwd):/opt/frontend/my-volto-project/src/addons/volto-clms-utils -e GIT_NAME=volto-clms-utils -e NAMESPACE=@eeacms plone/volto-addon-ci"
+    "test": "docker run -it --rm -v $(pwd):/opt/frontend/my-volto-project/src/addons/volto-clms-utils -e GIT_NAME=volto-clms-utils -e NAMESPACE=@eeacms plone/volto-addon-ci",
+    "prepare": "husky install"
+  },
+  "peerDependencies": {
+    "@loadable/component": "*"
   }
 }
