@@ -1,1 +1,1 @@
-export { withFonwAwesomeLibs } from './withFontAwesomeLibs';
+export { withFontAwesomeLibs } from './withFontAwesomeLibs';
