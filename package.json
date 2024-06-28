@@ -104,5 +104,8 @@
     "precommit": "yarn stylelint && yarn prettier && yarn lint",
     "test": "docker run -it --rm -v $(pwd):/opt/frontend/my-volto-project/src/addons/volto-clms-utils -e GIT_NAME=volto-clms-utils -e NAMESPACE=@eeacms plone/volto-addon-ci",
     "prepare": "husky install"
+  },
+  "peerDependencies": {
+    "@loadable/component": "*"
   }
 }
