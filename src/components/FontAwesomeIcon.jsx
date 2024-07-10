@@ -18,7 +18,12 @@ function FontAwesomeIcon(props) {
     ),
   );
 
-  return <IconComponent {...clean} />;
+  if (!props.icon) {
+    // eslint-disable-next-line no-console
+    console.warn('FontAwesomeIcon component without proper icon props');
+  }
+
+  return props.icon ? <IconComponent {...clean} /> : null;
 }
 
 export default withFontAwesomeLibs(FontAwesomeIcon);
