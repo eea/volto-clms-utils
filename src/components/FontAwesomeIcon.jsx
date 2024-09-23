@@ -6,6 +6,7 @@ const blacklist = [
   'fontAwesomeLibrary',
   'fontAwesomeSolid',
   'fontAwesomeRegular',
+  'fontAwesomeBrands',
 ];
 
 function FontAwesomeIcon(props) {
