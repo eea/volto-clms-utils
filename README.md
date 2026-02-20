@@ -3,16 +3,16 @@
 [![Releases](https://img.shields.io/github/v/release/eea/volto-clms-utils)](https://github.com/eea/volto-clms-utils/releases)
 
 [![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-clms-utils%2Fmaster&subject=master)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-clms-utils/job/master/display/redirect)
-[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils-master&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils-master)
-[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils-master&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils-master)
-[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils-master&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils-master)
-[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils-master&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils-master)
+[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils)
+[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils)
+[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils)
+[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils)
 
 [![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-clms-utils%2Fdevelop&subject=develop)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-clms-utils/job/develop/display/redirect)
-[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils-develop&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils-develop)
-[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils-develop&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils-develop)
-[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils-develop&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils-develop)
-[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils-develop&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils-develop)
+[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils&branch=develop&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils&branch=develop)
+[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils&branch=develop&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils&branch=develop)
+[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils&branch=develop&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils&branch=develop)
+[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-clms-utils&branch=develop&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-clms-utils&branch=develop)
 
 [Volto](https://github.com/plone/volto) add-on
 
